@@ -5,14 +5,14 @@ import os
 
 PLAYLIST = os.getenv("PLAYLIST")
 
-if not os.path.exists("../sources"):
-    os.mkdir("../sources")
+if not os.path.exists("sources"):
+    os.mkdir("sources")
 
 ytmusic = YTMusic("headers_auth.json")
 ytdl = YoutubeDL(
     {
         "format": "bestaudio",
-        "outtmpl": f"../sources/%(id)s.%(ext)s",
+        "outtmpl": f"sources/%(id)s.%(ext)s",
         "quiet": True,
         "cookiefile": "cookies.txt",
     }
@@ -35,13 +35,13 @@ for track in playlist["tracks"]:
 
     ytdl.download([f"https://www.youtube.com/watch?v={data['id']}"])
 
-    for file in os.listdir("../sources"):
+    for file in os.listdir("sources"):
         if file.startswith(data["id"]):
             data["filename"] = file
             break
 
-    with open(f"../sources/{data['id']}.json", "w", encoding="utf8") as file:
+    with open(f"sources/{data['id']}.json", "w", encoding="utf8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
-    with open(f"../sources/playlist.json", "w", encoding="utf8") as file:
+    with open(f"sources/playlist.json", "w", encoding="utf8") as file:
         json.dump(ids, file, ensure_ascii=False, indent=2)
