@@ -308,7 +308,7 @@
   dependencies:
     "@typescript-eslint/utils" "5.19.0"
 
-"@remotion/media-utils@3.3.79":
+"@remotion/media-utils@3.3.79", "@remotion/media-utils@^3.3.79":
   version "3.3.79"
   resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.3.79.tgz#595f74accf87bac2229869e7b0ada6fa2151a665"
   integrity sha512-XPpGNCP0zz4txDo16UXdGawGl/Af7zz1/IJ2DLvfEZ5WX2tSUFHoTo6ipDeL8fzN57GfExRKJWLvlHXpUGSINQ==
