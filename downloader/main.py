@@ -19,7 +19,11 @@ ytdl = YoutubeDL(
 )
 
 playlist = ytmusic.get_playlist(PLAYLIST)
+ids = []
+
 for track in playlist["tracks"]:
+    ids.append(track["videoId"])
+
     data = {
         "filename": None,
         "id": track["videoId"],
@@ -38,3 +42,6 @@ for track in playlist["tracks"]:
 
     with open(f"../sources/{data['id']}.json", "w", encoding="utf8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
+
+    with open(f"../sources/playlist.json", "w", encoding="utf8") as file:
+        json.dump(ids, file, ensure_ascii=False, indent=2)
