@@ -1,9 +1,10 @@
-from yt_dlp import YoutubeDL
-from ytmusicapi import YTMusic
 import json
 import os
 
-PLAYLIST = os.getenv("PLAYLIST")
+from yt_dlp import YoutubeDL
+from ytmusicapi import YTMusic
+
+PLAYLIST = "PLrOLWE2_egoPwbmDQRmaWEsYUK4Vk69t6"
 
 if not os.path.exists("sources"):
     os.mkdir("sources")
