@@ -6,7 +6,7 @@ t = time.time()
 
 
 BACKGROUND = "[0:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,boxblur=15:15,drawbox=x=0:y=0:w=1920:h=1080:color=black@0.25:t=fill[bg];"
-VISUALIZATION = "[1:a]avectorscope=s=1920x1080:rate=60:draw=line[vi];"
+VISUALIZATION = "[1:a]avectorscope=s=1920x1080:r=60:draw=line[vi];"
 VIDEO = "[bg][vi]overlay=W-w:H-h,drawtext=fontfile=font.ttf:fontcolor=white:fontsize=64:x=30:y=30:text='{text}'[video_out]"
 
 
@@ -20,7 +20,7 @@ def ffmpeg(data):
 
     filter = f"{BACKGROUND}{VISUALIZATION}{video}"
 
-    return f'ffmpeg -hwaccel cuda -i {cover} -i sources/{source} -filter_complex "{filter}" -map "[video_out]" -map 1:a -af "apad=pad_dur=1" -c:v h264_nvenc -preset p7 -cq 18 sources/{id}.mp4 -y'
+    return f'ffmpeg -hwaccel cuda -i {cover} -i sources/{source} -filter_complex "{filter}" -map "[video_out]" -map 1:a -af "apad=pad_dur=1" -r 60 -c:v h264_nvenc -preset p7 -cq 18 sources/{id}.mp4 -y'
 
 
 with open("sources/playlist.json", "r", encoding="utf8") as file:
