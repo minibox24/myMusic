@@ -1,10 +1,13 @@
 import json
 import os
+import time
 
 from yt_dlp import YoutubeDL
 from ytmusicapi import YTMusic
 
-PLAYLIST = "PLrOLWE2_egoPwbmDQRmaWEsYUK4Vk69t6"
+t = time.time()
+
+PLAYLIST = "PLrOLWE2_egoPinlNX9fIGwHQPVdt0lPHM"
 
 if not os.path.exists("sources"):
     os.mkdir("sources")
@@ -46,3 +49,6 @@ for track in playlist["tracks"]:
 
     with open(f"sources/playlist.json", "w", encoding="utf8") as file:
         json.dump(ids, file, ensure_ascii=False, indent=2)
+
+
+print("Done in", time.time() - t, "seconds")
